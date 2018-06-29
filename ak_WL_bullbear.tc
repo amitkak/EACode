@@ -1,0 +1,33 @@
+def cci_up = CCI("length" = 21, "over sold" = -125, "over bought" = 125)."CCI" > CCI("length" = 21, "over sold" = -125, "over bought" = 125)."ZeroLine";
+
+def cci_dn = CCI("length" = 21, "over sold" = -125, "over bought" = 125)."CCI" < CCI("length" = 21, "over sold" = -125, "over bought" = 125)."ZeroLine";
+
+def ma_up = MovAvgExponential("length" = 8)."AvgExp" > MovAvgExponential("length" = 13)."AvgExp";
+
+def ma_dn = MovAvgExponential("length" = 8)."AvgExp" < MovAvgExponential("length" = 13)."AvgExp";
+
+
+def stochup = StochasticFull()."FullK" > StochasticFull()."FullD";
+
+def stochdn = StochasticFull()."FullK" < StochasticFull()."FullD";
+
+
+def macd_up = MACD()."Value" > 0;
+
+def macd_dn = MACD()."Value" < 0;
+
+def bullish = stochup+cci_up;
+
+def bearish = stochdn+cci_dn;
+
+def score = bullish - bearish;
+
+def bullish1 = ma_up+macd_up;
+
+def bearish1 = ma_dn+macd_dn;
+
+def score2 = bullish1-bearish1;
+
+AddLabel (yes, if score2 == 0 then " " else if score2 ==1 then "U1" else if score2 == 2 then "U2" else if score2 == -1 then "D1" else if score2 == -2 then "D2" else "E", color.BLACK);
+
+AssignBackgroundColor(if score == 0 then color.YELLOW else if score == 1 then color.LIGHT_GREEN else if score == 2 then color.GREEN else if score == -2  then color.RED else if score == -1 then color.LIGHT_RED else color.WHITE);

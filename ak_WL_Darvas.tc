@@ -1,0 +1,15 @@
+def breakdown = close crosses below DarvasBox()."Lower Band" within 2 bars;
+
+def breakup = close crosses above DarvasBox()."Upper Band" within 2 bars;
+
+def sum = breakup+breakdown;
+
+
+AddLabel(yes, sum , color.BLACK);
+
+
+AssignBackgroundColor(if breakdown > 0
+     then Color.RED
+     else if breakup > 0
+     then Color.GREEN
+     else color.LIGHT_GRAY);
