@@ -1,0 +1,12 @@
+def bullish = CCI("length" = 21, "over sold" = -125, "over bought" = 125)."CCI" is greater than CCI("length" = 21, "over sold" = -125, "over bought" = 125)."ZeroLine";
+
+def bearish = CCI("length" = 21, "over sold" = -125, "over bought" = 125)."CCI" is less than CCI("length" = 21, "over sold" = -125, "over bought" = 125)."ZeroLine";
+
+def crossabove = CCI("length" = 21, "over sold" = -125, "over bought" = 125)."CCI" is greater than CCI("length" = 21, "over sold" = -125, "over bought" = 125)."Overbought";
+
+def crossbelow = CCI("length" = 21, "over sold" = -125, "over bought" = 125)."CCI" is less than CCI("length" = 21, "over sold" = -125, "over bought" = 125)."OverSold";
+
+AddLabel (yes, if crossabove then "^" else if crossbelow then "v" else " ", color.BLACK);
+
+AssignBackgroundColor(if bullish then color.GREEN else if bearish then color.RED else color.YELLOW);
+
