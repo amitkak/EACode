@@ -6,8 +6,6 @@ def bullish = MovAvgExponential("length" = 13)."AvgExp" is greater than MovAvgEx
 
 def bearish = MovAvgExponential("length" = 13)."AvgExp" is less than MovAvgExponential("length" = 21)."AvgExp";
 
-AddLabel (yes, if crossabove then "^" else if crossbelow then "v" else " ", color.BLACK);
+AddLabel (yes, if bearish and crossabove then "^" else if bullish and crossbelow then "v" else " ", color.WHITE);
 
 AssignBackgroundColor(if bullish and crossabove then color.GREEN else if bearish and crossbelow then color.RED else color.BLUE);
-
-
