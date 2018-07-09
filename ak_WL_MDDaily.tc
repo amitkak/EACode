@@ -7,6 +7,6 @@ def bullish = MACD()."Value" is greater than 0;
 def bearish = MACD()."Value" is less than 0;
 
 
-AddLabel (yes, if crossabove then "^" else if crossbelow then "v" else " ", color.BLACK);
+AddLabel (yes, if bearish and crossabove then "^" else if bullish and crossbelow then "v" else " ", color.WHITE);
 
 AssignBackgroundColor(if bullish and crossabove then color.GREEN else if bearish and crossbelow then color.RED else color.BLUE);
