@@ -7,6 +7,6 @@ def bullish = StochasticFull()."FullK" is greater than StochasticFull()."FullD";
 def bearish = StochasticFull()."FullK" is less than StochasticFull()."FullD";
 
 
-AddLabel (yes, if crossabove then "^" else if crossbelow then "v" else " ", color.BLACK);
+AddLabel (yes, if crossabove then "T" else if crossbelow then "_" else " ", color.YELLOW);
 
-AssignBackgroundColor(if bullish then color.GREEN else if bearish then color.RED else color.LIGHT_GRAY);
+AssignBackgroundColor(if bullish then color.GREEN else if bearish then color.RED else color.WHITE);
