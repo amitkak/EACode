@@ -6,7 +6,6 @@ def crossabove = CCI("length" = 21, "over sold" = -125, "over bought" = 125)."CC
 
 def crossbelow = CCI("length" = 21, "over sold" = -125, "over bought" = 125)."CCI" is less than CCI("length" = 21, "over sold" = -125, "over bought" = 125)."OverSold";
 
-AddLabel (yes, if crossabove then "^" else if crossbelow then "v" else " ", color.BLACK);
+AddLabel (yes, if crossabove then "T" else if crossbelow then "_" else " ", color.YELLOW);
 
-AssignBackgroundColor(if bullish then color.GREEN else if bearish then color.RED else color.YELLOW);
-
+AssignBackgroundColor(if bullish then color.GREEN else if bearish then color.RED else color.WHITE);
